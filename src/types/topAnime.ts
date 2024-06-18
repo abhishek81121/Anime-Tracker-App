@@ -1,4 +1,4 @@
-export interface RootObject {
+export interface TopAnimeInterface {
   pagination: Pagination;
   data: Datum[];
 }

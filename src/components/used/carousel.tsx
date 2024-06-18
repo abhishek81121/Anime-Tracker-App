@@ -7,13 +7,25 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import axios from "axios";
+import { TopAnimeInterface } from "@/types/topAnime";
 
 export function CarouselPlugin() {
-  console.log("hello");
+  const [carouselSrc, setCarouselSrc] = React.useState([]);
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
+  React.useEffect(() => {
+    axios.get("https://api.jikan.moe/v4/top/anime").then((reponse) => {
+      const resp: TopAnimeInterface = reponse.data;
 
+      const topAnimeNames = [];
+      for (let i = 0; i < 10; i++) {
+        topAnimeNames.push(resp.data[i].title);
+      }
+      console.log(topAnimeNames);
+    });
+  }, []);
   return (
     <Carousel
       // plugins={[plugin.current]}
