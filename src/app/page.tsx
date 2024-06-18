@@ -1,5 +1,11 @@
-import Image from "next/image";
+import * as React from "react";
+
+import { CarouselPlugin } from "@/components/used/carousel";
 
 export default function Home() {
-  return <></>;
+  return (
+    <div className="h-screen w-screen">
+      <CarouselPlugin></CarouselPlugin>
+    </div>
+  );
 }
